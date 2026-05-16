@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #F4EFE3;
+  --walnut: #2C2014;
+  --bronze: #B8864A;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--walnut);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "ss02";
+}
+
+::selection { background: var(--bronze); color: var(--cream); }
+
+/* Subtle fade-in for sections */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeInUp 0.8s ease-out forwards; }
+
+/* Hero name responsive sizing */
+.hero-name {
+  font-size: clamp(4rem, 18vw, 9rem);
+  line-height: 0.86;
+  letter-spacing: -0.04em;
+}
+
+/* Section dividers */
+.divider-line {
+  height: 0.5px;
+  background: rgba(184, 134, 74, 0.3);
+}

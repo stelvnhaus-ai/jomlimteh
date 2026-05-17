@@ -73,7 +73,7 @@ export default function Hero() {
             囍
           </span>
           <span className="font-serif italic text-bronze-dark text-base md:text-lg">
-            jom lim teh.
+            #jomlimteh
           </span>
         </div>
       </div>

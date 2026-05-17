@@ -136,7 +136,7 @@ function ParentLine({
     <div className="font-serif text-base md:text-lg text-walnut leading-snug">
       {/* Reserved label space — same height whether deceased or not, keeps grid aligned */}
       <div
-        className="font-mono text-[9px] tracking-[0.2em] mb-1 h-[14px] leading-[14px]"
+        className="font-mono text-[9px] tracking-[0.2em] mb-2 md:mb-1 min-h-[28px] leading-tight md:h-[14px] md:min-h-0 md:leading-[14px]"
         style={{ color: person.deceased ? "#8B6F47" : "transparent" }}
         aria-hidden={!person.deceased}
       >

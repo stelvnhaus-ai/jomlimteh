@@ -8,7 +8,7 @@ export default function Schedule() {
           <div className="font-mono text-[10px] tracking-[0.4em] text-bronze-dark mb-3">
             — THE DAY · 时间 —
           </div>
-          <h2 className="font-display text-3xl md:text-5xl text-walnut leading-tight">
+          <h2 className="font-num text-3xl md:text-5xl text-walnut leading-tight">
             {wedding.date.dayOfWeekEn}, {wedding.date.full}
           </h2>
           <p className="font-serif italic text-bronze text-sm md:text-base mt-3 tracking-wider">
@@ -22,7 +22,7 @@ export default function Schedule() {
               <div className="font-mono text-[9px] tracking-[0.3em] text-bronze-dark">
                 {wedding.schedule.cocktailZh} · {wedding.schedule.cocktailEn.toUpperCase()}
               </div>
-              <div className="font-display text-4xl md:text-5xl text-walnut mt-3">
+              <div className="font-num text-4xl md:text-5xl text-walnut mt-3">
                 {wedding.schedule.cocktailTime}
               </div>
             </div>
@@ -30,7 +30,7 @@ export default function Schedule() {
               <div className="font-mono text-[9px] tracking-[0.3em] text-bronze-dark">
                 {wedding.schedule.dinnerZh} · {wedding.schedule.dinnerEn.toUpperCase()}
               </div>
-              <div className="font-display text-4xl md:text-5xl text-walnut mt-3">
+              <div className="font-num text-4xl md:text-5xl text-walnut mt-3">
                 {wedding.schedule.dinnerTime}
               </div>
             </div>

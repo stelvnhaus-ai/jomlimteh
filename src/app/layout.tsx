@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter, JetBrains_Mono, Italiana } from "next/font/google";
+import { Cormorant_Garamond, Inter, JetBrains_Mono, Lato, Crimson_Pro } from "next/font/google";
 import "./globals.css";
 import { wedding } from "@/lib/config";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["300", "400", "500"],
   style: ["normal", "italic"],
   variable: "--font-cormorant",
 });
@@ -19,10 +19,15 @@ const jetbrains = JetBrains_Mono({
   weight: ["400", "500"],
   variable: "--font-jetbrains",
 });
-const italiana = Italiana({
+const lato = Lato({
   subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-italiana",
+  weight: ["300", "400"],
+  variable: "--font-lato",
+});
+const crimsonPro = Crimson_Pro({
+  subsets: ["latin"],
+  weight: ["300", "400"],
+  variable: "--font-crimson-pro",
 });
 
 export const metadata: Metadata = {
@@ -49,8 +54,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${inter.variable} ${jetbrains.variable} ${italiana.variable}`}
+      className={`${cormorant.variable} ${inter.variable} ${jetbrains.variable} ${lato.variable} ${crimsonPro.variable}`}
     >
+      <head>
+        {/* LXGW WenKai — Kaiti (classical brush script) for Chinese names. Not on Google Fonts. */}
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"
+        />
+        {/* Crash Numbering Serif is self-hosted from /public/fonts — see @font-face in globals.css */}
+      </head>
       <body>{children}</body>
     </html>
   );

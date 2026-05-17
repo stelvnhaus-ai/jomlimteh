@@ -52,7 +52,7 @@ export default function Hero() {
         <h1 className="font-display font-normal text-walnut hero-name">
           {wedding.groom.firstNameEn}
         </h1>
-        <div className="font-serif italic text-bronze text-3xl md:text-4xl my-2 md:my-3">
+        <div className="font-lato font-light text-bronze text-3xl md:text-4xl my-3 md:my-4 leading-none tracking-[0.2em]">
           &amp;
         </div>
         <h1 className="font-display font-normal text-walnut hero-name">
@@ -60,7 +60,7 @@ export default function Hero() {
         </h1>
 
         {/* Chinese names below */}
-        <div className="mt-6 md:mt-8 font-serif text-lg md:text-xl text-bronze-dark tracking-[0.3em]">
+        <div className="mt-6 md:mt-8 font-cn-display text-2xl md:text-3xl text-bronze-dark tracking-[0.25em]">
           {wedding.groom.nameZh} · {wedding.bride.nameZh}
         </div>
 
@@ -82,7 +82,7 @@ export default function Hero() {
       <div className="relative z-10 mt-4">
         <div className="flex items-center justify-center gap-4 md:gap-6">
           <span className="h-[0.5px] flex-1 max-w-[80px] bg-bronze/40" aria-hidden="true" />
-          <div className="flex items-baseline gap-2 md:gap-3 font-display text-walnut">
+          <div className="flex items-baseline gap-2 md:gap-3 font-num text-walnut">
             <span className="text-sm md:text-base font-serif text-bronze-dark tracking-[0.2em]">SUN</span>
             <span className="text-3xl md:text-4xl leading-none">20</span>
             <span className="text-sm md:text-base font-serif text-bronze-dark tracking-[0.2em]">SEP</span>
@@ -100,7 +100,7 @@ export default function Hero() {
             <div className="font-mono text-[10px] md:text-xs tracking-[0.25em] text-bronze-dark">
               {wedding.schedule.dinnerZh} · DINNER
             </div>
-            <div className="font-display text-walnut mt-1 leading-snug text-xl md:text-2xl">
+            <div className="font-num text-walnut mt-1 leading-snug text-xl md:text-2xl">
               {wedding.schedule.dinnerTime}
             </div>
             <div className="font-serif italic text-bronze-dark text-sm mt-1">

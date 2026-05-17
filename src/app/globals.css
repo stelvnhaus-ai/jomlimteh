@@ -26,15 +26,30 @@ body {
 }
 .fade-in { animation: fadeInUp 0.8s ease-out forwards; }
 
-/* Hero name responsive sizing */
+/* Hero name responsive sizing — tuned for Allura (script): needs more leading
+   for ascenders/descenders, no negative tracking to keep ligatures connected */
 .hero-name {
   font-size: clamp(4rem, 18vw, 9rem);
-  line-height: 0.86;
-  letter-spacing: -0.04em;
+  line-height: 1.05;
+  letter-spacing: 0;
 }
 
 /* Section dividers */
 .divider-line {
   height: 0.5px;
   background: rgba(184, 134, 74, 0.3);
+}
+
+/* Cormorant Garamond Light is the numeral face — same family as body, just dialed light */
+.font-num {
+  font-weight: 300;
+}
+
+/* Self-hosted Autobiography (freeware, via FontSpace) — hero couple names */
+@font-face {
+  font-family: "Autobiography";
+  src: url("/fonts/Autobiography.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }

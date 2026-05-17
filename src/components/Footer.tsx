@@ -11,6 +11,9 @@ export default function Footer() {
       <div className="font-serif italic text-walnut-light text-sm mt-3">
         {wedding.domain}
       </div>
+      <div className="font-mono text-[9px] tracking-[0.3em] text-bronze-dark/60 mt-6">
+        DESIGNED &amp; BUILT WITH CLAUDE OPUS 4.7
+      </div>
     </footer>
   );
 }

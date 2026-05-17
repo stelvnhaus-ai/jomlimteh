@@ -58,8 +58,8 @@ export const wedding = {
 
   // RSVP
   rsvp: {
-    deadline: "20 August 2026",
-    deadlineShort: "20.08.26",
+    deadline: "18 August 2026",
+    deadlineShort: "18.08.26",
   },
 
   // Dress code

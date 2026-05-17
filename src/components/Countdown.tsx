@@ -49,7 +49,7 @@ export default function Countdown() {
       <div className="max-w-2xl mx-auto grid grid-cols-4 gap-3 md:gap-6">
         {blocks.map((b) => (
           <div key={b.label} className="text-center">
-            <div className="font-display text-5xl md:text-7xl text-walnut leading-none tabular-nums">
+            <div className="font-num text-5xl md:text-7xl text-walnut leading-none tabular-nums">
               {String(b.value).padStart(2, "0")}
             </div>
             <div className="font-mono text-[9px] md:text-[10px] tracking-[0.3em] text-bronze-dark mt-2 md:mt-3">

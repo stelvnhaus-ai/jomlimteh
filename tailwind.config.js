@@ -15,8 +15,11 @@ module.exports = {
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
         serif: ["var(--font-cormorant)", "Georgia", "serif"],
-        display: ["var(--font-italiana)", "Georgia", "serif"],
+        display: ['"Autobiography"', "Georgia", "serif"],
+        lato: ["var(--font-lato)", "system-ui", "sans-serif"],
         mono: ["var(--font-jetbrains)", "monospace"],
+        num: ["var(--font-crimson-pro)", "Georgia", "serif"],
+        "cn-display": ['"LXGW WenKai"', '"Kaiti SC"', '"KaiTi"', "serif"],
       },
     },
   },

@@ -143,7 +143,7 @@ function ParentLine({
         {person.deceased ? "先严 · IN LOVING MEMORY" : "\u00A0"}
       </div>
       <div
-        className={`text-xl md:text-2xl leading-tight ${
+        className={`font-cn-display text-2xl md:text-3xl leading-tight tracking-[0.1em] ${
           person.deceased ? "italic" : ""
         }`}
       >

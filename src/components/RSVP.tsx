@@ -5,6 +5,93 @@ import { wedding, googleForm } from "@/lib/config";
 
 type Attending = "yes" | "no" | "";
 
+// Wedding runs ~4 hours from the dinner start time
+const WEDDING_DURATION_HOURS = 4;
+
+function formatIcsDate(d: Date) {
+  // YYYYMMDDTHHMMSSZ — UTC, per RFC 5545
+  return d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+}
+
+function getCalendarDetails() {
+  const start = new Date(wedding.date.iso);
+  const end = new Date(start.getTime() + WEDDING_DURATION_HOURS * 60 * 60 * 1000);
+  const title = `${wedding.groom.firstNameEn} & ${wedding.bride.firstNameEn} — Wedding`;
+  const location = `${wedding.venue.nameEn}, ${wedding.venue.addressLine1}, ${wedding.venue.addressLine2}, ${wedding.venue.addressLine3}`;
+  const description = `Join us as we celebrate our wedding. Dress code: ${wedding.dressCode.en}. More info: ${wedding.url}`;
+  return { start, end, title, location, description };
+}
+
+function googleCalendarUrl() {
+  const { start, end, title, location, description } = getCalendarDetails();
+  const params = new URLSearchParams({
+    action: "TEMPLATE",
+    text: title,
+    dates: `${formatIcsDate(start)}/${formatIcsDate(end)}`,
+    location,
+    details: description,
+  });
+  return `https://calendar.google.com/calendar/render?${params.toString()}`;
+}
+
+function downloadIcs() {
+  const { start, end, title, location, description } = getCalendarDetails();
+  const ics = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//jomlimteh//Wedding//EN",
+    "CALSCALE:GREGORIAN",
+    "METHOD:PUBLISH",
+    "BEGIN:VEVENT",
+    `UID:wedding-${wedding.date.iso}@jomlimteh.com`,
+    `DTSTAMP:${formatIcsDate(new Date())}`,
+    `DTSTART:${formatIcsDate(start)}`,
+    `DTEND:${formatIcsDate(end)}`,
+    `SUMMARY:${title}`,
+    `LOCATION:${location.replace(/,/g, "\\,")}`,
+    `DESCRIPTION:${description.replace(/,/g, "\\,")}`,
+    "END:VEVENT",
+    "END:VCALENDAR",
+  ].join("\r\n");
+
+  const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "yan-yang-bee-hui-wedding.ics";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function AddToCalendar() {
+  return (
+    <div className="text-center">
+      <div className="font-mono text-[10px] tracking-[0.4em] text-bronze-dark mb-4">
+        — SAVE THE DATE · 加入日历 —
+      </div>
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+        <a
+          href={googleCalendarUrl()}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-6 py-3 border border-walnut text-walnut font-mono text-xs tracking-[0.2em] hover:bg-walnut hover:text-cream transition-colors"
+        >
+          GOOGLE CALENDAR
+        </a>
+        <button
+          type="button"
+          onClick={downloadIcs}
+          className="px-6 py-3 border border-walnut text-walnut font-mono text-xs tracking-[0.2em] hover:bg-walnut hover:text-cream transition-colors"
+        >
+          APPLE · OUTLOOK (.ICS)
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function RSVP() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -74,6 +161,9 @@ export default function RSVP() {
         <p className="font-serif italic text-walnut-light mt-4 text-lg max-w-md mx-auto">
           We've received your RSVP and can't wait to celebrate with you.
         </p>
+        <div className="mt-12 max-w-md mx-auto">
+          <AddToCalendar />
+        </div>
       </section>
     );
   }
@@ -86,7 +176,7 @@ export default function RSVP() {
             — RSVP · 回覆 —
           </div>
           <h2 className="font-serif text-3xl md:text-4xl text-walnut mt-2">
-            Will you join us?
+            Save us a seat.
           </h2>
           <p className="font-serif italic text-bronze-dark mt-3 text-sm md:text-base">
             Please reply by {wedding.rsvp.deadline}
@@ -178,6 +268,10 @@ export default function RSVP() {
             {submitting ? "SENDING..." : "SEND RSVP →"}
           </button>
         </form>
+
+        <div className="mt-12 pt-8 border-t border-bronze/20">
+          <AddToCalendar />
+        </div>
       </div>
     </section>
   );

@@ -5,7 +5,7 @@ export default function Venue() {
     <section className="py-16 md:py-24 px-6 md:px-12 border-t border-bronze/20">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-10">
-          <div className="font-mono text-[10px] tracking-[0.4em] text-bronze-dark mb-3">
+          <div className="font-mono text-[11px] tracking-[0.4em] text-bronze-dark mb-3">
             — THE VENUE · 地点 —
           </div>
           <h2 className="font-num text-3xl md:text-5xl text-walnut leading-tight">

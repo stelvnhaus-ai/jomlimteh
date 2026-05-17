@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col px-6 py-8 md:px-12 md:py-12 overflow-hidden">
       {/* Top corner marks */}
-      <div className="flex justify-between items-start font-mono text-[10px] md:text-xs tracking-[0.3em] text-bronze-dark relative z-10">
+      <div className="flex justify-between items-start font-mono text-xs md:text-sm tracking-[0.3em] text-bronze-dark relative z-10">
         <div>
           № 001<br />
           KL · MY
@@ -19,12 +19,12 @@ export default function Hero() {
       <div className="flex flex-col items-center mt-8 md:mt-12 relative z-10">
         <div className="flex items-center gap-3 md:gap-4">
           <span className="h-[0.5px] w-8 md:w-12 bg-bronze/60" aria-hidden="true" />
-          <span className="font-serif text-bronze-dark tracking-[0.4em] text-xs md:text-sm">
+          <span className="font-serif text-bronze-dark tracking-[0.4em] text-sm md:text-base">
             喜结良缘
           </span>
           <span className="h-[0.5px] w-8 md:w-12 bg-bronze/60" aria-hidden="true" />
         </div>
-        <span className="mt-3 md:mt-4 font-mono text-[9px] md:text-[10px] tracking-[0.4em] text-bronze">
+        <span className="mt-3 md:mt-4 font-mono text-[11px] md:text-xs tracking-[0.4em] text-bronze">
           — A WEDDING IN KUALA LUMPUR —
         </span>
       </div>
@@ -82,10 +82,9 @@ export default function Hero() {
       <div className="relative z-10 mt-4">
         <div className="flex items-center justify-center gap-4 md:gap-6">
           <span className="h-[0.5px] flex-1 max-w-[80px] bg-bronze/40" aria-hidden="true" />
-          <div className="flex items-baseline gap-2 md:gap-3 font-num text-walnut">
-            <span className="text-sm md:text-base font-serif text-bronze-dark tracking-[0.2em]">SUN</span>
+          <div className="flex items-baseline gap-2 md:gap-4 font-num text-walnut">
             <span className="text-3xl md:text-4xl leading-none">20</span>
-            <span className="text-sm md:text-base font-serif text-bronze-dark tracking-[0.2em]">SEP</span>
+            <span className="text-lg md:text-2xl leading-none">SEPTEMBER</span>
             <span className="text-3xl md:text-4xl leading-none">26</span>
           </div>
           <span className="h-[0.5px] flex-1 max-w-[80px] bg-bronze/40" aria-hidden="true" />
@@ -97,7 +96,7 @@ export default function Hero() {
         <div className="divider-line mb-5" />
         <div className="flex justify-between items-end gap-4">
           <div>
-            <div className="font-mono text-[10px] md:text-xs tracking-[0.25em] text-bronze-dark">
+            <div className="font-mono text-[11px] md:text-xs tracking-[0.25em] text-bronze-dark">
               {wedding.schedule.dinnerZh} · DINNER
             </div>
             <div className="font-num text-walnut mt-1 leading-snug text-xl md:text-2xl">

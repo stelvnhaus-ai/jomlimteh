@@ -35,7 +35,7 @@ export default function Story() {
     <section className="py-16 md:py-24 px-6 md:px-12 border-t border-bronze/20">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
-          <div className="font-mono text-[10px] tracking-[0.4em] text-bronze-dark mb-2">
+          <div className="font-mono text-[11px] tracking-[0.4em] text-bronze-dark mb-2">
             — OUR STORY · 故事 —
           </div>
           <div className="font-serif text-5xl md:text-6xl text-bronze">囍</div>
@@ -70,7 +70,7 @@ export default function Story() {
                 aria-hidden="true"
               />
               <div
-                className="font-mono text-[11px] tracking-[0.15em] font-medium mb-1"
+                className="font-mono text-xs tracking-[0.15em] font-medium mb-1"
                 style={{ color: m.isFinal ? "#2C2014" : "#C0392B" }}
               >
                 {m.date}
@@ -95,7 +95,7 @@ export default function Story() {
         {/* Parents block */}
         <div className="mt-20 pt-12 border-t border-bronze/20">
           <div className="text-center mb-10">
-            <div className="font-mono text-[10px] tracking-[0.4em] text-bronze-dark">
+            <div className="font-mono text-[11px] tracking-[0.4em] text-bronze-dark">
               — 谨订于 · TOGETHER WITH OUR FAMILIES —
             </div>
           </div>
@@ -103,7 +103,7 @@ export default function Story() {
           <div className="grid grid-cols-2 gap-8 md:gap-16">
             {/* Bride's family — LEFT (女家) */}
             <div className="text-center">
-              <div className="font-mono text-[9px] tracking-[0.3em] text-bronze mb-4">
+              <div className="font-mono text-[10px] tracking-[0.3em] text-bronze mb-4">
                 女家 · BRIDE'S FAMILY
               </div>
               <ParentLine person={wedding.parents.bride.father} />
@@ -113,7 +113,7 @@ export default function Story() {
 
             {/* Groom's family — RIGHT (男家) */}
             <div className="text-center">
-              <div className="font-mono text-[9px] tracking-[0.3em] text-bronze mb-4">
+              <div className="font-mono text-[10px] tracking-[0.3em] text-bronze mb-4">
                 男家 · GROOM'S FAMILY
               </div>
               <ParentLine person={wedding.parents.groom.father} />
@@ -136,7 +136,7 @@ function ParentLine({
     <div className="font-serif text-base md:text-lg text-walnut leading-snug">
       {/* Reserved label space — same height whether deceased or not, keeps grid aligned */}
       <div
-        className="font-mono text-[9px] tracking-[0.2em] mb-2 md:mb-1 min-h-[28px] leading-tight md:h-[14px] md:min-h-0 md:leading-[14px]"
+        className="font-mono text-[10px] tracking-[0.2em] mb-2 md:mb-1 min-h-[28px] leading-tight md:h-[14px] md:min-h-0 md:leading-[14px]"
         style={{ color: person.deceased ? "#8B6F47" : "transparent" }}
         aria-hidden={!person.deceased}
       >

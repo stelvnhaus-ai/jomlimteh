@@ -42,7 +42,7 @@ export default function Countdown() {
   return (
     <section className="py-16 md:py-24 px-6 border-t border-bronze/20">
       <div className="text-center mb-8">
-        <div className="font-mono text-[10px] tracking-[0.4em] text-bronze-dark">
+        <div className="font-mono text-[11px] tracking-[0.4em] text-bronze-dark">
           — COUNTING DOWN —
         </div>
       </div>
@@ -52,7 +52,7 @@ export default function Countdown() {
             <div className="font-num text-5xl md:text-7xl text-walnut leading-none tabular-nums">
               {String(b.value).padStart(2, "0")}
             </div>
-            <div className="font-mono text-[9px] md:text-[10px] tracking-[0.3em] text-bronze-dark mt-2 md:mt-3">
+            <div className="font-mono text-[10px] md:text-[11px] tracking-[0.3em] text-bronze-dark mt-2 md:mt-3">
               {b.label}
             </div>
           </div>

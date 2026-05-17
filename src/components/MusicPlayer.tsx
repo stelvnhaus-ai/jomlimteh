@@ -86,7 +86,7 @@ export default function MusicPlayer() {
               <PlayIcon />
             )}
           </span>
-          <span className="hidden md:inline font-mono text-[10px] tracking-[0.2em] text-bronze-dark">
+          <span className="hidden md:inline font-mono text-[11px] tracking-[0.2em] text-bronze-dark">
             {playing ? "PAUSE" : "PLAY"}
           </span>
         </button>

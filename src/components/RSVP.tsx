@@ -68,7 +68,7 @@ function downloadIcs() {
 function AddToCalendar() {
   return (
     <div className="text-center">
-      <div className="font-mono text-[10px] tracking-[0.4em] text-bronze-dark mb-4">
+      <div className="font-mono text-xs tracking-[0.4em] text-bronze-dark mb-4">
         — SAVE THE DATE · 加入日历 —
       </div>
       <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
@@ -76,14 +76,14 @@ function AddToCalendar() {
           href={googleCalendarUrl()}
           target="_blank"
           rel="noopener noreferrer"
-          className="px-6 py-3 border border-walnut text-walnut font-mono text-xs tracking-[0.2em] hover:bg-walnut hover:text-cream transition-colors"
+          className="px-6 py-3 border border-walnut text-walnut font-mono text-sm tracking-[0.2em] hover:bg-walnut hover:text-cream transition-colors"
         >
           GOOGLE CALENDAR
         </a>
         <button
           type="button"
           onClick={downloadIcs}
-          className="px-6 py-3 border border-walnut text-walnut font-mono text-xs tracking-[0.2em] hover:bg-walnut hover:text-cream transition-colors"
+          className="px-6 py-3 border border-walnut text-walnut font-mono text-sm tracking-[0.2em] hover:bg-walnut hover:text-cream transition-colors"
         >
           APPLE · OUTLOOK (.ICS)
         </button>
@@ -172,14 +172,15 @@ export default function RSVP() {
     <section id="rsvp" className="py-16 md:py-24 px-6 md:px-12 border-t border-bronze/20">
       <div className="max-w-xl mx-auto">
         <div className="text-center mb-10">
-          <div className="font-mono text-[10px] tracking-[0.4em] text-bronze-dark mb-2">
+          <div className="font-mono text-xs tracking-[0.4em] text-bronze-dark mb-2">
             — RSVP · 回覆 —
           </div>
           <h2 className="font-serif text-3xl md:text-4xl text-walnut mt-2">
             Save us a seat.
           </h2>
-          <p className="font-serif italic text-bronze-dark mt-3 text-sm md:text-base">
-            Please reply by {wedding.rsvp.deadline}
+          <p className="font-serif italic text-bronze-dark mt-3 text-base md:text-lg">
+            Please reply by{" "}
+            <span className="font-bold text-walnut">{wedding.rsvp.deadline}</span>
           </p>
         </div>
 
@@ -263,7 +264,7 @@ export default function RSVP() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full mt-6 py-4 bg-walnut text-cream font-mono text-xs tracking-[0.3em] hover:bg-bronze transition-colors disabled:opacity-50"
+            className="w-full mt-6 py-4 bg-walnut text-cream font-mono text-sm tracking-[0.3em] hover:bg-bronze transition-colors disabled:opacity-50"
           >
             {submitting ? "SENDING..." : "SEND RSVP →"}
           </button>
@@ -288,7 +289,7 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="font-mono text-[10px] tracking-[0.2em] text-bronze-dark uppercase">
+      <span className="font-mono text-xs tracking-[0.2em] text-bronze-dark uppercase">
         {label} {required && <span className="text-bronze">*</span>}
       </span>
       <div className="mt-1">{children}</div>
@@ -311,15 +312,15 @@ function RadioButton({
     <button
       type="button"
       onClick={onChange}
-      className={`px-4 py-3 border rounded-sm text-left transition-colors ${
+      className={`px-5 py-4 border rounded-sm text-left transition-colors ${
         checked
           ? "border-walnut bg-walnut text-cream"
           : "border-bronze/40 text-walnut hover:border-bronze"
       }`}
     >
-      <div className="font-serif text-base">{label}</div>
+      <div className="font-serif text-lg">{label}</div>
       <div
-        className={`text-xs mt-0.5 ${
+        className={`text-sm mt-0.5 ${
           checked ? "text-cream/70" : "text-bronze-dark"
         }`}
       >

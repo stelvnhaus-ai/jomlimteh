@@ -4,7 +4,7 @@ export default function DressCode() {
   return (
     <section className="py-16 md:py-24 px-6 md:px-12 border-t border-bronze/20">
       <div className="max-w-2xl mx-auto text-center">
-        <div className="font-mono text-[10px] tracking-[0.4em] text-bronze-dark mb-2">
+        <div className="font-mono text-[11px] tracking-[0.4em] text-bronze-dark mb-2">
           — DRESS CODE · 衣着 —
         </div>
         <h2 className="font-serif text-3xl md:text-4xl text-walnut mt-2">

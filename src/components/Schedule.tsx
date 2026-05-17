@@ -19,20 +19,18 @@ export default function Schedule() {
         <div className="border border-bronze/30 rounded-sm py-8 md:py-10 px-6">
           <div className="grid grid-cols-2 gap-4 divide-x divide-bronze/20">
             <div className="text-center px-4">
-              <div className="flex items-end justify-center min-h-[34px] md:min-h-[16px]">
-                <span className="font-mono text-[9px] tracking-[0.3em] text-bronze-dark leading-tight">
-                  {wedding.schedule.cocktailZh} · {wedding.schedule.cocktailEn.toUpperCase()}
-                </span>
+              <div className="font-mono text-[9px] tracking-[0.3em] text-bronze-dark leading-relaxed">
+                <div>{wedding.schedule.cocktailZh}</div>
+                <div>{wedding.schedule.cocktailEn.toUpperCase()}</div>
               </div>
               <div className="font-num text-4xl md:text-5xl text-walnut mt-3">
                 {wedding.schedule.cocktailTime}
               </div>
             </div>
             <div className="text-center px-4">
-              <div className="flex items-end justify-center min-h-[34px] md:min-h-[16px]">
-                <span className="font-mono text-[9px] tracking-[0.3em] text-bronze-dark leading-tight">
-                  {wedding.schedule.dinnerZh} · {wedding.schedule.dinnerEn.toUpperCase()}
-                </span>
+              <div className="font-mono text-[9px] tracking-[0.3em] text-bronze-dark leading-relaxed">
+                <div>{wedding.schedule.dinnerZh}</div>
+                <div>{wedding.schedule.dinnerEn.toUpperCase()}</div>
               </div>
               <div className="font-num text-4xl md:text-5xl text-walnut mt-3">
                 {wedding.schedule.dinnerTime}

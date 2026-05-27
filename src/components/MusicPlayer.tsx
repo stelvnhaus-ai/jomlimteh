@@ -68,26 +68,28 @@ export default function MusicPlayer() {
         <button
           onClick={toggle}
           aria-label={playing ? "Pause music" : "Play music"}
-          className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 rounded-full pl-2 pr-3 md:pr-4 py-2 transition-all hover:scale-105"
+          className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex items-center gap-3 rounded-full pl-2 pr-4 md:pr-5 py-2 transition-all hover:scale-105 active:scale-95"
           style={{
-            background: "rgba(244,239,227,0.92)",
-            border: "0.5px solid rgba(184,134,74,0.4)",
+            background: "rgba(244,239,227,0.95)",
+            border: "0.5px solid rgba(184,134,74,0.5)",
             backdropFilter: "blur(8px)",
             WebkitBackdropFilter: "blur(8px)",
+            boxShadow: "0 4px 16px rgba(44, 32, 20, 0.08)",
           }}
         >
           <span
-            className="w-7 h-7 rounded-full flex items-center justify-center text-cream"
+            className="w-8 h-8 rounded-full flex items-center justify-center text-cream flex-shrink-0"
             style={{ background: "#C0392B" }}
           >
-            {playing ? (
-              <PauseIcon />
-            ) : (
-              <PlayIcon />
-            )}
+            {playing ? <PauseIcon /> : <PlayIcon />}
           </span>
-          <span className="hidden md:inline font-mono text-[11px] tracking-[0.2em] text-bronze-dark">
-            {playing ? "PAUSE" : "PLAY"}
+          <span className="font-mono text-[11px] md:text-xs tracking-[0.2em] text-walnut whitespace-nowrap">
+            <span className="md:hidden">
+              {playing ? "♪ PERFECT" : "PLAY MUSIC"}
+            </span>
+            <span className="hidden md:inline">
+              {playing ? "NOW PLAYING · PERFECT" : "TAP TO PLAY · PERFECT"}
+            </span>
           </span>
         </button>
       )}

@@ -92,70 +92,8 @@ export default function Story() {
           — Yan Yang &amp; Bee Hui
         </div>
 
-        {/* Parents block */}
-        <div className="mt-20 pt-12 border-t border-bronze/20">
-          <div className="text-center mb-10">
-            <div className="font-mono text-[11px] tracking-[0.4em] text-bronze-dark">
-              — 谨订于 · TOGETHER WITH OUR FAMILIES —
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-8 md:gap-16">
-            {/* Bride's family — LEFT (女家) */}
-            <div className="text-center">
-              <div className="font-mono text-[10px] tracking-[0.3em] text-bronze mb-4">
-                女家 · BRIDE'S FAMILY
-              </div>
-              <ParentLine person={wedding.parents.bride.father} />
-              <div className="text-bronze text-xs my-3 md:my-4">·</div>
-              <ParentLine person={wedding.parents.bride.mother} />
-            </div>
-
-            {/* Groom's family — RIGHT (男家) */}
-            <div className="text-center">
-              <div className="font-mono text-[10px] tracking-[0.3em] text-bronze mb-4">
-                男家 · GROOM'S FAMILY
-              </div>
-              <ParentLine person={wedding.parents.groom.father} />
-              <div className="text-bronze text-xs my-3 md:my-4">·</div>
-              <ParentLine person={wedding.parents.groom.mother} />
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
 }
 
-function ParentLine({
-  person,
-}: {
-  person: { en: string; zh: string; deceased: boolean };
-}) {
-  return (
-    <div className="font-serif text-base md:text-lg text-walnut leading-snug">
-      {/* Reserved label space — same height whether deceased or not, keeps grid aligned */}
-      <div
-        className="font-mono text-[10px] tracking-[0.2em] mb-2 md:mb-1 min-h-[28px] leading-tight md:h-[14px] md:min-h-0 md:leading-[14px]"
-        style={{ color: person.deceased ? "#8B6F47" : "transparent" }}
-        aria-hidden={!person.deceased}
-      >
-        {person.deceased ? "先严 · IN LOVING MEMORY" : "\u00A0"}
-      </div>
-      <div
-        className={`font-cn-display text-2xl md:text-3xl leading-tight tracking-[0.1em] ${
-          person.deceased ? "italic" : ""
-        }`}
-      >
-        {person.zh}
-      </div>
-      <div
-        className={`text-walnut-light text-sm mt-1 ${
-          person.deceased ? "italic" : ""
-        }`}
-      >
-        {person.en}
-      </div>
-    </div>
-  );
-}

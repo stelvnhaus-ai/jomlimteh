@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     description: `Our wedding · ${wedding.date.full} · ${wedding.venue.nameEn}, KL`,
     url: wedding.url,
     siteName: "jomlimteh.com",
-    images: [{ url: "/og.png", width: 1200, height: 630 }],
     locale: "en_MY",
     type: "website",
+    // OG image is generated dynamically by src/app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",

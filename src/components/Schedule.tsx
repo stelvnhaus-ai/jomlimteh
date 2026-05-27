@@ -16,25 +16,14 @@ export default function Schedule() {
           </p>
         </div>
 
-        <div className="border border-bronze/30 rounded-sm py-8 md:py-10 px-6">
-          <div className="grid grid-cols-2 gap-4 divide-x divide-bronze/20">
-            <div className="text-center px-4">
-              <div className="font-mono text-[10px] tracking-[0.3em] text-bronze-dark leading-relaxed">
-                <div>{wedding.schedule.cocktailZh}</div>
-                <div>{wedding.schedule.cocktailEn.toUpperCase()}</div>
-              </div>
-              <div className="font-num text-4xl md:text-5xl text-walnut mt-3">
-                {wedding.schedule.cocktailTime}
-              </div>
+        <div className="border border-bronze/30 rounded-sm py-10 md:py-12 px-6">
+          <div className="text-center">
+            <div className="font-mono text-[10px] tracking-[0.3em] text-bronze-dark leading-relaxed">
+              <div>{wedding.schedule.dinnerZh}</div>
+              <div>{wedding.schedule.dinnerEn.toUpperCase()}</div>
             </div>
-            <div className="text-center px-4">
-              <div className="font-mono text-[10px] tracking-[0.3em] text-bronze-dark leading-relaxed">
-                <div>{wedding.schedule.dinnerZh}</div>
-                <div>{wedding.schedule.dinnerEn.toUpperCase()}</div>
-              </div>
-              <div className="font-num text-4xl md:text-5xl text-walnut mt-3">
-                {wedding.schedule.dinnerTime}
-              </div>
+            <div className="font-num text-5xl md:text-6xl text-walnut mt-4">
+              {wedding.schedule.dinnerTime}
             </div>
           </div>
         </div>

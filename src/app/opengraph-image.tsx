@@ -6,9 +6,8 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 // Fetch a font from Google Fonts as ArrayBuffer in TTF/OTF format.
-// CRITICAL: @vercel/og (Satori) does NOT support WOFF2 — only TTF/OTF/WOFF.
+// @vercel/og (Satori) does NOT support WOFF2 — only TTF/OTF/WOFF.
 // Sending no User-Agent header makes Google return the TTF URL.
-// The `text` parameter subsets the font to only include the glyphs we use.
 async function loadFont(family: string, text: string, weight?: number): Promise<ArrayBuffer> {
   const familyParam = weight ? `${family}:wght@${weight}` : family;
   const url = `https://fonts.googleapis.com/css2?family=${familyParam}&text=${encodeURIComponent(text)}`;
@@ -19,9 +18,13 @@ async function loadFont(family: string, text: string, weight?: number): Promise<
 }
 
 export default async function Image() {
+  // Designed thumbnail-first: WhatsApp / iMessage center-crop the 1200x630
+  // image to roughly square. All critical content must fit inside a center
+  // column ~600px wide, and text must be large enough to survive downscaling
+  // to ~200px wide previews.
   const [crimson, mono] = await Promise.all([
     loadFont("Crimson+Pro", "Yan Yang & Bee Hui 20 SEPTEMBER 2026", 400),
-    loadFont("JetBrains+Mono", "— A WEDDING IN KUALA LUMPUR — jomlimteh.com", 400),
+    loadFont("JetBrains+Mono", "KUALA LUMPUR · 20.09.26", 400),
   ]);
 
   return new ImageResponse(
@@ -52,80 +55,80 @@ export default async function Image() {
           }}
         />
 
-        {/* Top tagline */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 20,
-            marginBottom: 80,
-          }}
-        >
-          <div style={{ width: 60, height: 1, background: "#B8864A", opacity: 0.5 }} />
-          <div
-            style={{
-              fontFamily: "JetBrains Mono",
-              fontSize: 18,
-              letterSpacing: "0.4em",
-              color: "#8B6F47",
-            }}
-          >
-            — A WEDDING IN KUALA LUMPUR —
-          </div>
-          <div style={{ width: 60, height: 1, background: "#B8864A", opacity: 0.5 }} />
-        </div>
-
-        {/* Names — single line, clean serif */}
+        {/* Names — stacked so they fit in a narrow center column when cropped */}
         <div
           style={{
             fontFamily: "Crimson Pro",
-            fontSize: 92,
-            lineHeight: 1.1,
+            fontSize: 118,
+            lineHeight: 1.0,
             color: "#2C2014",
             letterSpacing: "-0.01em",
             display: "flex",
           }}
         >
-          Yan Yang &amp; Bee Hui
+          Yan Yang
         </div>
-
-        {/* Spacer ornament */}
-        <div
-          style={{
-            width: 80,
-            height: 1,
-            background: "#B8864A",
-            opacity: 0.6,
-            margin: "44px 0",
-          }}
-        />
-
-        {/* Date */}
         <div
           style={{
             fontFamily: "Crimson Pro",
-            fontSize: 42,
-            color: "#2C2014",
-            letterSpacing: "0.06em",
+            fontSize: 56,
+            lineHeight: 1.0,
+            color: "#B8864A",
+            margin: "12px 0",
             display: "flex",
           }}
         >
-          20 SEPTEMBER 2026
+          &amp;
         </div>
-
-        {/* Bottom — domain */}
         <div
           style={{
-            position: "absolute",
-            bottom: 70,
-            fontFamily: "JetBrains Mono",
-            fontSize: 14,
-            letterSpacing: "0.35em",
-            color: "#B8864A",
+            fontFamily: "Crimson Pro",
+            fontSize: 118,
+            lineHeight: 1.0,
+            color: "#2C2014",
+            letterSpacing: "-0.01em",
             display: "flex",
           }}
         >
-          jomlimteh.com
+          Bee Hui
+        </div>
+
+        {/* Ornament divider */}
+        <div
+          style={{
+            width: 100,
+            height: 1,
+            background: "#B8864A",
+            opacity: 0.6,
+            margin: "44px 0 32px 0",
+          }}
+        />
+
+        {/* Tagline — short enough to survive crop */}
+        <div
+          style={{
+            fontFamily: "JetBrains Mono",
+            fontSize: 22,
+            letterSpacing: "0.35em",
+            color: "#8B6F47",
+            display: "flex",
+            marginBottom: 16,
+          }}
+        >
+          KUALA LUMPUR
+        </div>
+
+        {/* Date — prominent, central, big enough to read at thumbnail size */}
+        <div
+          style={{
+            fontFamily: "JetBrains Mono",
+            fontSize: 38,
+            color: "#2C2014",
+            letterSpacing: "0.2em",
+            display: "flex",
+          }}
+        >
+          20.09.26
         </div>
       </div>
     ),

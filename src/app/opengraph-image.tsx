@@ -13,19 +13,15 @@ async function loadFont(family: string, text: string, weight?: number): Promise<
   const familyParam = weight ? `${family}:wght@${weight}` : family;
   const url = `https://fonts.googleapis.com/css2?family=${familyParam}&text=${encodeURIComponent(text)}`;
   const css = await fetch(url).then((r) => r.text());
-
-  // Match TTF or OTF specifically (not WOFF2).
   const match = css.match(/src:\s*url\(([^)]+)\)\s*format\(['"]?(opentype|truetype)['"]?\)/);
-  if (!match) throw new Error(`No TTF/OTF font URL in CSS for ${family}. CSS was: ${css.slice(0, 200)}`);
+  if (!match) throw new Error(`No TTF/OTF font URL in CSS for ${family}`);
   return fetch(match[1]).then((r) => r.arrayBuffer());
 }
 
 export default async function Image() {
-  const [allura, crimson, lato, mono] = await Promise.all([
-    loadFont("Allura", "Yan Yang Bee Hui"),
-    loadFont("Crimson+Pro", "20 SEPTEMBER 2026", 400),
-    loadFont("Lato", "&", 300),
-    loadFont("JetBrains+Mono", "— A WEDDING IN KUALA LUMPUR — JOMLIMTEH.COM", 400),
+  const [crimson, mono] = await Promise.all([
+    loadFont("Crimson+Pro", "Yan Yang & Bee Hui 20 SEPTEMBER 2026", 400),
+    loadFont("JetBrains+Mono", "— A WEDDING IN KUALA LUMPUR — jomlimteh.com", 400),
   ]);
 
   return new ImageResponse(
@@ -40,7 +36,6 @@ export default async function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          padding: 60,
           fontFamily: "Crimson Pro",
           position: "relative",
         }}
@@ -49,75 +44,69 @@ export default async function Image() {
         <div
           style={{
             position: "absolute",
-            top: 30,
-            left: 30,
-            right: 30,
-            bottom: 30,
-            border: "0.5px solid rgba(184,134,74,0.35)",
+            top: 36,
+            left: 36,
+            right: 36,
+            bottom: 36,
+            border: "0.5px solid rgba(184,134,74,0.4)",
           }}
         />
 
         {/* Top tagline */}
-        <div style={{ display: "flex", alignItems: "center", gap: 18, marginBottom: 32 }}>
-          <div style={{ width: 70, height: 1, background: "#B8864A", opacity: 0.5 }} />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 20,
+            marginBottom: 80,
+          }}
+        >
+          <div style={{ width: 60, height: 1, background: "#B8864A", opacity: 0.5 }} />
           <div
             style={{
               fontFamily: "JetBrains Mono",
-              fontSize: 16,
+              fontSize: 18,
               letterSpacing: "0.4em",
               color: "#8B6F47",
             }}
           >
             — A WEDDING IN KUALA LUMPUR —
           </div>
-          <div style={{ width: 70, height: 1, background: "#B8864A", opacity: 0.5 }} />
+          <div style={{ width: 60, height: 1, background: "#B8864A", opacity: 0.5 }} />
         </div>
 
-        {/* Names */}
+        {/* Names — single line, clean serif */}
         <div
           style={{
-            fontFamily: "Allura",
-            fontSize: 160,
-            lineHeight: 1.0,
+            fontFamily: "Crimson Pro",
+            fontSize: 92,
+            lineHeight: 1.1,
             color: "#2C2014",
+            letterSpacing: "-0.01em",
             display: "flex",
           }}
         >
-          Yan Yang
+          Yan Yang &amp; Bee Hui
         </div>
+
+        {/* Spacer ornament */}
         <div
           style={{
-            fontFamily: "Lato",
-            fontWeight: 300,
-            fontSize: 38,
-            letterSpacing: "0.25em",
-            color: "#B8864A",
-            margin: "6px 0",
-            display: "flex",
+            width: 80,
+            height: 1,
+            background: "#B8864A",
+            opacity: 0.6,
+            margin: "44px 0",
           }}
-        >
-          &
-        </div>
-        <div
-          style={{
-            fontFamily: "Allura",
-            fontSize: 160,
-            lineHeight: 1.0,
-            color: "#2C2014",
-            display: "flex",
-            marginBottom: 40,
-          }}
-        >
-          Bee Hui
-        </div>
+        />
 
         {/* Date */}
         <div
           style={{
             fontFamily: "Crimson Pro",
-            fontSize: 40,
+            fontSize: 42,
             color: "#2C2014",
-            letterSpacing: "0.05em",
+            letterSpacing: "0.06em",
             display: "flex",
           }}
         >
@@ -128,24 +117,22 @@ export default async function Image() {
         <div
           style={{
             position: "absolute",
-            bottom: 60,
+            bottom: 70,
             fontFamily: "JetBrains Mono",
-            fontSize: 13,
+            fontSize: 14,
             letterSpacing: "0.35em",
             color: "#B8864A",
             display: "flex",
           }}
         >
-          JOMLIMTEH.COM
+          jomlimteh.com
         </div>
       </div>
     ),
     {
       ...size,
       fonts: [
-        { name: "Allura", data: allura, weight: 400, style: "normal" },
         { name: "Crimson Pro", data: crimson, weight: 400, style: "normal" },
-        { name: "Lato", data: lato, weight: 300, style: "normal" },
         { name: "JetBrains Mono", data: mono, weight: 400, style: "normal" },
       ],
     }

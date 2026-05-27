@@ -5,29 +5,27 @@ export const alt = "Yan Yang & Bee Hui — A Wedding in Kuala Lumpur · 20 Septe
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// Fetch a font file from Google Fonts as ArrayBuffer.
-// We hit the CSS endpoint, extract the .woff2 URL, then fetch it.
-async function loadFont(googleFontsCssUrl: string): Promise<ArrayBuffer> {
-  const css = await fetch(googleFontsCssUrl, {
-    headers: {
-      // User-Agent matters: without it, Google returns legacy .ttf/.eot;
-      // with a modern browser UA it returns .woff2.
-      "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    },
-  }).then((r) => r.text());
+// Fetch a font from Google Fonts as ArrayBuffer in TTF/OTF format.
+// CRITICAL: @vercel/og (Satori) does NOT support WOFF2 — only TTF/OTF/WOFF.
+// Sending no User-Agent header makes Google return the TTF URL.
+// The `text` parameter subsets the font to only include the glyphs we use.
+async function loadFont(family: string, text: string, weight?: number): Promise<ArrayBuffer> {
+  const familyParam = weight ? `${family}:wght@${weight}` : family;
+  const url = `https://fonts.googleapis.com/css2?family=${familyParam}&text=${encodeURIComponent(text)}`;
+  const css = await fetch(url).then((r) => r.text());
 
-  const match = css.match(/src:\s*url\(([^)]+)\)\s*format/);
-  if (!match) throw new Error(`Font URL not found in CSS from ${googleFontsCssUrl}`);
+  // Match TTF or OTF specifically (not WOFF2).
+  const match = css.match(/src:\s*url\(([^)]+)\)\s*format\(['"]?(opentype|truetype)['"]?\)/);
+  if (!match) throw new Error(`No TTF/OTF font URL in CSS for ${family}. CSS was: ${css.slice(0, 200)}`);
   return fetch(match[1]).then((r) => r.arrayBuffer());
 }
 
 export default async function Image() {
   const [allura, crimson, lato, mono] = await Promise.all([
-    loadFont("https://fonts.googleapis.com/css2?family=Allura"),
-    loadFont("https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400"),
-    loadFont("https://fonts.googleapis.com/css2?family=Lato:wght@300"),
-    loadFont("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400"),
+    loadFont("Allura", "Yan Yang Bee Hui"),
+    loadFont("Crimson+Pro", "20 SEPTEMBER 2026", 400),
+    loadFont("Lato", "&", 300),
+    loadFont("JetBrains+Mono", "— A WEDDING IN KUALA LUMPUR — JOMLIMTEH.COM", 400),
   ]);
 
   return new ImageResponse(
